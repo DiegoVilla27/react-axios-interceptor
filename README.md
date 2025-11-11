@@ -1,73 +1,100 @@
-# React + TypeScript + Vite
+# 🧩 React Vite Clean Architecture Boilerplate
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A professional **React + Vite** boilerplate designed **scalable modular structure**.\
+Includes support for **TypeScript**, **Axios HTTP client**, **React
+Router**, and **environment-based configuration**.
 
-Currently, two official plugins are available:
+------------------------------------------------------------------------
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Features
 
-## React Compiler
+-   ⚛️ **React 18** with functional components and hooks\
+-   ⚙️ **Vite** for ultra-fast builds and hot module replacement\
+-   🌐 **Axios** with interceptor setup for centralized request
+    handling\
+-   🗂️ **Type-safe routing** using React Router v6\
+-   🧩 **CSS Modules** with scoped naming conventions\
+-   🧭 **Environment management** for `development` and `production`\
+-   🧰 Organized folder aliases for better imports
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+------------------------------------------------------------------------
 
-## Expanding the ESLint configuration
+## ⚙️ Environment Variables
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Create environment files based on your deployment needs:
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+    .env
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+Each file must define:
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+``` bash
+VITE_API_URL=https://api.example.com
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Access the environment variable using:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+``` ts
+import ENVIRONMENTS from "@/environments";
+console.log(ENVIRONMENTS.apiUrl);
 ```
+
+------------------------------------------------------------------------
+
+## 🧠 Core Concepts
+
+### 🏗️ Clean Architecture Layers
+
+-   **Entities:** Define core data structures (`IUserEntity`).
+-   **Models:** Represent API response structures (`IUserModel`).
+-   **Mappers:** Transform API data into app-level entities
+    (`mappingUsers`).
+-   **Services:** Contain business logic and API calls (`getUsers`).
+
+### 🧩 Routing System
+
+Routing is defined in modular files to ensure scalability.
+
+Example:
+
+``` ts
+const HomePageRoutes: RouteObject = {
+  path: routesPaths['home'].path,
+  element: (
+    <Layout>
+      <HomePage />
+    </Layout>
+  )
+};
+```
+
+------------------------------------------------------------------------
+
+## 🛠️ Scripts
+
+  Command             Description
+  ------------------- --------------------------
+  `npm run dev`       Start development server
+  `npm run build`     Build for production
+  `npm run preview`   Preview production build
+
+------------------------------------------------------------------------
+
+## 🧰 Technologies
+
+-   **React 18**
+-   **Vite**
+-   **TypeScript**
+-   **Axios**
+-   **React Router v6**
+-   **CSS Modules**
+
+------------------------------------------------------------------------
+
+## 👨‍💻 Author
+
+**Diego Villanueva**\
+Frontend Software Engineer & Technical Leader\
+💼 8+ years of experience in Angular, React, and modern frontend
+architecture.\
+🌐 Remote developer passionate about clean code, scalability, and
+product vision.
