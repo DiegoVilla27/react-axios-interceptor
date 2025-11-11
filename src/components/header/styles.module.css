@@ -1,0 +1,19 @@
+.header {
+  height: 50px;
+  background-color: #e6e4e4;
+  padding: 0px 10px;
+}
+
+.nav {
+  height: 100%;
+  width: 100%;
+}
+
+.ul {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  list-style: none;
+  gap: 10px;
+}

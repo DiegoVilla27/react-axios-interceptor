@@ -1,4 +1,10 @@
 import { createRoot } from 'react-dom/client';
-import App from './App.tsx';
+import { RouterProvider } from 'react-router-dom';
+import router from '@/router';
+import axios from "axios";
+import { setupInterceptorsTo } from '@/interceptors/http';
+import "./styles.global.css";
 
-createRoot(document.getElementById('root')!).render(<App />);
+setupInterceptorsTo(axios);
+
+createRoot(document.getElementById('root')!).render(<RouterProvider router={router} />);
